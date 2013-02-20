@@ -33,6 +33,7 @@ Bundle 'myusuf3/numbers.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/OnSyntaxChange'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'kien/ctrlp.vim'
 
 " General programming specific
 Bundle 'scrooloose/syntastic'
@@ -41,6 +42,9 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
+Bundle 'vim-scripts/closetag.vim'
+Bundle 'skammer/vim-css-color'
+Bundle 'tpope/vim-sleuth'
 if executable('ctags')
 	Bundle 'majutsushi/tagbar'
 endif
@@ -70,7 +74,6 @@ autocmd BufNewFile,BufRead *.sass set filetype=css
 " dark background
 set t_Co=256
 set background=dark
-"colorscheme tir_black 
 colorscheme molokai
 
 " Other customizations
@@ -156,7 +159,7 @@ endif
 
 cmap Tabe tabe
 nnoremap Y y$
-nmap <silent> <leader><space> :nohlsearch<CR>       " clear search hilight with ,/
+nmap <silent> <leader><space> :nohlsearch<CR>
 vnoremap < <gv
 vnoremap > >gv
 
@@ -201,7 +204,27 @@ let g:EclimBrowser='firefox'
 " autocmd User SyntaxCommentEnterI silent! AcpLock
 " autocmd User SyntaxCommentLeaveI silent! AcpUnlock
 
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-P settings
+""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_working_path_mode = 2
+nnoremap <silent> <D-t> :CtrlP<CR>
+nnoremap <silent> <D-r> :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+	\ 'dir': '\.git$\|\.hg$\|\.svn$',
+	\ 'file': '\.exe$\|\.so$\|\.dll$' }
+
+let g:ctrlp_user_command = {
+	\ 'types': {
+		\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+		\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+	\ },
+	\ 'fallback': 'find %s -type f'
+\ }
+
+""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabularize customizations
+" """"""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader>a& :Tabularize /&<CR>
 vmap <Leader>a& :Tabularize /&<CR>
 nmap <Leader>a= :Tabularize /=<CR>
