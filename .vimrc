@@ -52,7 +52,7 @@ endif
 " Snippets & Autocomplete
 Bundle 'Shougo/neocomplcache'
 "Bundle 'Valloric/YouCompleteMe'
-Bundle 'honza/snipmate-snippets'
+Bundle 'scrooloose/snipmate-snippets'
 
 " PHP plugins
 Bundle 'spf13/PIV'
