@@ -63,7 +63,7 @@ Bundle 'python_match.vim'
 Bundle 'pythoncomplete'
 
 " C# plugins
-Bundle 'xandox/vim-csharp'
+Bundle 'OrangeT/vim-csharp'
 
 
 " workaround for css/sass
